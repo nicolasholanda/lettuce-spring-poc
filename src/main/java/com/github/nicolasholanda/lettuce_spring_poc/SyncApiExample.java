@@ -10,6 +10,10 @@ public class SyncApiExample {
         RedisClient client = RedisClient.create("redis://localhost");
         StatefulRedisConnection<String, String> connection = client.connect();
         RedisCommands<String, String> commands = connection.sync();
+
+        commands.set("foo", "bar");
+
         String value = commands.get("foo");
+        System.out.println(value);
     }
 }
